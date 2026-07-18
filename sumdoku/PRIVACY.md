@@ -1,8 +1,11 @@
 # SumDoku — Privacy Policy
 
-_Last updated: 2026-07-17_
+_Last updated: 2026-07-18_
 
-SumDoku is a daily Killer Sudoku puzzle game. This policy explains what
+This privacy policy applies to the app **SumDoku — Daily Killer Sudoku**
+(package `app.fatmika.sumdoku`), published on Google Play by the developer
+**Fat Mika** (FatMika Games — "we", "us"). SumDoku is a daily Killer Sudoku
+puzzle game. This policy explains what
 data the app collects, why it's collected, and how to contact us about it.
 
 ## What we collect

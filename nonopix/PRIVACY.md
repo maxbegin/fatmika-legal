@@ -2,8 +2,11 @@
 
 _Last updated: 2026-07-18_
 
-NonoPix is a daily nonogram (picross) puzzle game. This policy explains what
-data the app collects, why it's collected, and how to contact us about it.
+This privacy policy applies to the app **NonoPix: Nonogram Puzzles** (package
+`app.nono.daily`), published on Google Play and the App Store by the developer
+**Fat Mika** (FatMika Games — "we", "us"). NonoPix is a daily nonogram
+(picross) puzzle game. This policy explains what data the app collects, why
+it's collected, and how to contact us about it.
 
 ## What we collect
 
