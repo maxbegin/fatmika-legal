@@ -5,8 +5,8 @@ served as HTML via GitHub Pages at **https://maxbegin.github.io/fatmika-legal/**
 
 | App | Privacy policy | Account deletion |
 |---|---|---|
+| NonoPix (Daily Nonogram) | [page](https://maxbegin.github.io/fatmika-legal/nonopix/privacy/) · [md](nonopix/PRIVACY.md) | [page](https://maxbegin.github.io/fatmika-legal/nonopix/delete-account/) · [md](nonopix/DELETE-ACCOUNT.md) |
 | SumDoku (Daily Killer Sudoku) | [page](https://maxbegin.github.io/fatmika-legal/sumdoku/privacy/) · [md](sumdoku/PRIVACY.md) | [page](https://maxbegin.github.io/fatmika-legal/sumdoku/delete-account/) · [md](sumdoku/DELETE-ACCOUNT.md) |
-| Plotto | [page](https://maxbegin.github.io/fatmika-legal/plotto/privacy/) · [md](plotto/PRIVACY.md) | — |
 
 The `*/index.html` pages are the store-facing copies; the markdown files are
 the editable sources. Update both together.

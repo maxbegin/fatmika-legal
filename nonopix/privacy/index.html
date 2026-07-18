@@ -3,43 +3,52 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Plotto — Privacy Policy</title>
+<title>NonoPix — Privacy Policy</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,700;0,800;1,700&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="../../assets/legal.css" />
-<style>:root { --accent: #2e8b9b; }</style>
 </head>
 <body>
 <div class="wrap">
   <div class="brand">
-    <a href="../../"><span class="wordmark">Plot<em>to</em></span></a>
+    <a href="../../"><span class="wordmark">Nono<em>Pix</em></span></a>
     <span class="studio">FatMika Games · Legal</span>
   </div>
   <main>
     <h1>Privacy Policy</h1>
-    <p class="updated">Last updated: 2026-05-16 · applies to <strong>Plotto: Daily Shikaku Puzzle</strong> (<code>app.fatmika.plotto</code>)</p>
+    <p class="updated">Last updated: 2026-07-18 · applies to <strong>NonoPix</strong> (<code>app.nono.daily</code>)</p>
 
-    <p>Plotto is a daily rectangle-partition puzzle game. This policy explains what data
+    <p>NonoPix is a daily nonogram (picross) puzzle game. This policy explains what data
     the app collects, why it's collected, and how to contact us about it.</p>
 
     <h2>What we collect</h2>
     <ul>
-      <li><strong>Solve history</strong> — when you complete a daily or weekly puzzle, the
-        app stores your solve time, hint count, and the date in our Supabase database.
-        This powers your streak counter, personal-best stats, and (eventually) the weekly
-        leaderboard.</li>
+      <li><strong>Solve history</strong> — when you complete a puzzle, the app stores your
+        solve time, error count, hint count, and the date in our Supabase database. This
+        powers your streak counter, personal-best stats, and leaderboards.</li>
       <li><strong>Anonymous account id</strong> — on first launch we create an anonymous
         Supabase user so your progress can survive a reinstall. If you sign in with
         Google or Apple later, that same id is upgraded to a real account — your data
         carries over.</li>
+      <li><strong>Name and email from your sign-in provider (optional)</strong> — only if
+        you choose to sign in with Google or Apple, we receive the basic profile (name,
+        email) they share. It identifies your account and syncs progress across devices.
+        We never use it for marketing.</li>
+      <li><strong>Display name and friend groups (optional)</strong> — if you set a
+        display name or join a friend leaderboard, those are stored with your
+        profile.</li>
+      <li><strong>Usage events</strong> — the app records gameplay events (e.g. puzzle
+        started, puzzle completed) with your platform and app version in our own
+        database to understand how features are used. No third-party analytics SDKs are
+        involved; this data never leaves our infrastructure.</li>
       <li><strong>Push token (optional)</strong> — if you opt in to the daily reminder, we
-        store the device's Expo push token so we can send the 8&nbsp;AM notification.
-        Toggle the reminder off in Settings to delete the stored token on next launch.</li>
+        store the device's Expo push token so we can send the notification. Toggle the
+        reminder off to stop deliveries.</li>
       <li><strong>RevenueCat customer id</strong> — premium status (the shared
         "Fat&nbsp;Mika&nbsp;Pro" entitlement) is managed by RevenueCat. Their customer id
         is a deterministic hash of your account so the same purchase unlocks across
-        NonoPix, SumDoku, and Plotto.</li>
+        NonoPix, SumDoku, and future FatMika apps.</li>
     </ul>
 
     <h2>What we don't collect</h2>
@@ -47,15 +56,15 @@
       <li>No advertising identifiers.</li>
       <li>No location.</li>
       <li>No microphone, camera, contacts, or calendar access.</li>
-      <li>No analytics SDKs (Firebase / Mixpanel / Amplitude etc.).</li>
+      <li>No third-party analytics SDKs (Firebase / Mixpanel / Amplitude etc.).</li>
       <li>No third-party data sharing for marketing.</li>
     </ul>
 
     <h2>How long we keep it</h2>
-    <p>Solve rows, profile rows, and push tokens stay in our database until you ask us to
-    delete them — email the address below and we'll wipe everything tied to your account.
-    Anonymous accounts that haven't been used in 12 months may be deleted
-    automatically.</p>
+    <p>Solve rows, profile rows, usage events, and push tokens stay in our database until
+    you ask us to delete them — see <a href="../delete-account/">Delete your account</a>
+    or email the address below and we'll wipe everything tied to your account. Anonymous
+    accounts that haven't been used in 12 months may be deleted automatically.</p>
 
     <h2>Where it lives</h2>
     <ul>
@@ -68,7 +77,7 @@
     </ul>
 
     <h2>Children</h2>
-    <p>Plotto's content rating is 4+ / Everyone. We don't knowingly collect data from
+    <p>NonoPix's content rating is Everyone / 4+. We don't knowingly collect data from
     children under 13. If you believe a child has created an account, email us and we'll
     delete it.</p>
 
@@ -76,8 +85,9 @@
     <p>Email <span class="email">maxime.begin@gmail.com</span> to:</p>
     <ul>
       <li>Request a copy of all data tied to your account.</li>
-      <li>Delete your account and every row tied to it.</li>
-      <li>Ask any other question about how Plotto handles your data.</li>
+      <li>Delete your account and every row tied to it
+        (<a href="../delete-account/">how it works</a>).</li>
+      <li>Ask any other question about how NonoPix handles your data.</li>
     </ul>
     <p>Replies typically arrive within a few business days.</p>
 
@@ -86,9 +96,9 @@
     in-app revision so a fresh update carries the new policy URL.</p>
 
     <hr />
-    <p class="footer-note">Plotto is part of
-    <a href="https://github.com/maxbegin">FatMika Games</a> — the same team behind NonoPix
-    and SumDoku. Premium ("Fat Mika Pro") unlocks across all three apps.</p>
+    <p class="footer-note">NonoPix is part of
+    <a href="https://github.com/maxbegin">FatMika Games</a> — the same team behind
+    SumDoku. Premium ("Fat Mika Pro") unlocks across the whole FatMika puzzle family.</p>
   </main>
 </div>
 </body>
