@@ -24,8 +24,8 @@ Everything tied to the account, within **14 days** of the request:
 - Push notification token
 - The account itself (Supabase auth user)
 
-Subscription state lives with RevenueCat and your Google Play account;
-cancelling or managing the subscription happens through Google Play.
+Purchase state lives with RevenueCat and your Google Play account;
+refunds and purchase management happen through Google Play.
 
 ## Data kept
 

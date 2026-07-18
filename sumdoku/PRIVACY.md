@@ -23,7 +23,7 @@ data the app collects, why it's collected, and how to contact us about it.
   Toggle the reminder off in Settings to stop deliveries.
 - **RevenueCat customer id** — premium status (the shared "Fat Mika Pro"
   entitlement) is managed by RevenueCat. Their customer id is a deterministic
-  hash of your account so the same subscription unlocks across NonoPix,
+  hash of your account so the same purchase unlocks across NonoPix,
   SumDoku, and Plotto.
 
 ## What we don't collect
@@ -45,7 +45,7 @@ months may be deleted automatically.
 
 - **Supabase** (Postgres + Auth + Edge Functions) — see
   [supabase.com/privacy](https://supabase.com/privacy).
-- **RevenueCat** for subscription / entitlement state — see
+- **RevenueCat** for purchase / entitlement state — see
   [revenuecat.com/privacy](https://www.revenuecat.com/privacy).
 - **Expo / EAS** for OTA updates and (if opted-in) push delivery — see
   [expo.dev/privacy](https://expo.dev/privacy).
