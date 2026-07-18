@@ -64,7 +64,7 @@ email us and we'll delete it.
 
 ## Your rights
 
-Email **maxime.begin@gmail.com** to:
+Email **contact@fatmika.com** to:
 
 - Request a copy of all data tied to your account.
 - Delete your account and every row tied to it.

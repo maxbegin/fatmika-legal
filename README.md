@@ -11,4 +11,4 @@ served as HTML via GitHub Pages at **https://maxbegin.github.io/fatmika-legal/**
 The `*/index.html` pages are the store-facing copies; the markdown files are
 the editable sources. Update both together.
 
-Questions: **maxime.begin@gmail.com**
+Questions: **contact@fatmika.com**

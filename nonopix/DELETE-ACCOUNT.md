@@ -6,7 +6,7 @@ everything tied to it — at any time.
 
 ## How to request deletion
 
-Email **maxime.begin@gmail.com** with the subject **"Delete my NonoPix account"**.
+Email **contact@fatmika.com** with the subject **"Delete my NonoPix account"**.
 
 - If you signed in with Google or Apple, send the request from (or mention)
   the email address on that account so we can find it.

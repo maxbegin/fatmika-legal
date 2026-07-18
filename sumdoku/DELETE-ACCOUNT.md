@@ -6,7 +6,7 @@ delete that account — and everything tied to it — at any time.
 
 ## How to request deletion
 
-Email **maxime.begin@gmail.com** with the subject **"Delete my SumDoku account"**.
+Email **contact@fatmika.com** with the subject **"Delete my SumDoku account"**.
 
 - If you signed in with an email code, send the request from (or mention) that
   email address so we can find the account.
