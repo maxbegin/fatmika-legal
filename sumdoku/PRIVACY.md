@@ -23,8 +23,8 @@ data the app collects, why it's collected, and how to contact us about it.
   Toggle the reminder off in Settings to stop deliveries.
 - **RevenueCat customer id** — premium status (the shared "Fat Mika Pro"
   entitlement) is managed by RevenueCat. Their customer id is a deterministic
-  hash of your account so the same purchase unlocks across NonoPix,
-  SumDoku, and Plotto.
+  hash of your account so the same purchase unlocks across
+  NonoPix and SumDoku.
 
 ## What we don't collect
 
@@ -74,5 +74,4 @@ bump the in-app revision so a fresh OTA carries the new policy URL.
 ---
 
 SumDoku is part of [FatMika Games](https://github.com/maxbegin) — the same
-team behind NonoPix and Plotto. Premium ("Fat Mika Pro") unlocks across
-all three apps.
+team behind NonoPix. Premium ("Fat Mika Pro") unlocks across both apps.
