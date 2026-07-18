@@ -1,0 +1,52 @@
+/* FatMika Games — shared legal-page styles */
+:root {
+  --bg: #f0eae0;
+  --card: #fffdf9;
+  --text: #2c2520;
+  --dim: #a0937f;
+  --line: #ddd5c8;
+  --accent: #e8735a;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 16px/1.65 "Plus Jakarta Sans", -apple-system, "Segoe UI", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+.wrap { max-width: 720px; margin: 0 auto; padding: 48px 24px 96px; }
+.brand {
+  display: flex; align-items: baseline; justify-content: space-between;
+  margin-bottom: 40px; gap: 12px; flex-wrap: wrap;
+}
+.brand a { text-decoration: none; }
+.wordmark { font-size: 22px; font-weight: 800; color: var(--text); }
+.wordmark em { font-style: italic; font-weight: 700; color: var(--accent); }
+.brand .studio {
+  font-family: "IBM Plex Mono", Consolas, monospace;
+  font-size: 12px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--dim);
+}
+main {
+  background: var(--card); border: 1px solid var(--line);
+  border-radius: 16px; padding: 40px 44px;
+}
+h1 { font-size: 30px; line-height: 1.15; letter-spacing: -0.5px; margin: 0 0 6px; }
+.updated { color: var(--dim); font-size: 13.5px; margin: 0 0 28px; }
+h2 { font-size: 19px; margin: 32px 0 10px; }
+p, li { color: var(--text); }
+ul { padding-left: 22px; }
+li { margin: 6px 0; }
+li strong:first-child { color: var(--text); }
+a { color: var(--accent); }
+hr { border: none; border-top: 1px solid var(--line); margin: 32px 0; }
+.footer-note { color: var(--dim); font-size: 14px; }
+.email {
+  display: inline-block; background: var(--bg); border: 1px solid var(--line);
+  border-radius: 8px; padding: 2px 10px;
+  font-family: "IBM Plex Mono", Consolas, monospace; font-size: 14.5px;
+}
+table.apps { width: 100%; border-collapse: collapse; }
+table.apps th, table.apps td { text-align: left; padding: 10px 8px; border-bottom: 1px solid var(--line); }
+table.apps th { font-size: 13px; text-transform: uppercase; letter-spacing: 1px; color: var(--dim); }
+@media (max-width: 560px) { main { padding: 28px 22px; } }
