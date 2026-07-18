@@ -3,40 +3,286 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>FatMika Games — Legal</title>
+<title>FatMika Games — one puzzle a day, no ads</title>
+<meta name="description" content="FatMika Games makes small, daily logic puzzle apps — NonoPix (daily nonograms) and SumDoku (daily killer sudoku). Hand-built, quietly polished, no ads ever." />
+<link rel="icon" href="assets/fat-mika.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,700;0,800;1,700&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="assets/legal.css" />
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,700;0,800;1,700;1,800&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg: #f0eae0;
+    --card: #fffdf9;
+    --ink: #2c2520;
+    --dim: #a0937f;
+    --subtle: #b8afa2;
+    --line: #ddd5c8;
+    --coral: #e8735a;
+    --gold: #f0a848;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font: 17px/1.6 "Plus Jakarta Sans", -apple-system, "Segoe UI", system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+  a { color: var(--coral); }
+  a:focus-visible, button:focus-visible { outline: 3px solid var(--coral); outline-offset: 3px; border-radius: 4px; }
+
+  /* ---------- header ---------- */
+  header {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 26px 0 0;
+  }
+  .wordmark {
+    font-size: 21px; font-weight: 800; letter-spacing: -0.3px;
+    color: var(--ink); text-decoration: none;
+  }
+  .wordmark em { font-style: italic; font-weight: 700; color: var(--coral); }
+  header nav { display: flex; gap: 22px; }
+  header nav a {
+    font-family: "IBM Plex Mono", monospace; font-size: 12.5px; font-weight: 500;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    color: var(--dim); text-decoration: none;
+  }
+  header nav a:hover { color: var(--coral); }
+
+  /* ---------- hero ---------- */
+  .hero {
+    display: grid; grid-template-columns: 1.25fr 0.75fr;
+    align-items: center; gap: 32px;
+    padding: 72px 0 56px;
+  }
+  .solve-strip {
+    display: flex; gap: 5px; margin-bottom: 26px;
+  }
+  .solve-strip span {
+    width: 13px; height: 13px; border-radius: 3px;
+    background: var(--line);
+  }
+  .solve-strip span.f { background: var(--ink); }
+  .solve-strip span.c { background: var(--coral); }
+  .solve-strip span.g { background: var(--gold); }
+  @media (prefers-reduced-motion: no-preference) {
+    .solve-strip span.f, .solve-strip span.c, .solve-strip span.g {
+      animation: fill-in 0.35s cubic-bezier(0.2, 0.9, 0.3, 1.3) both;
+      animation-delay: var(--d);
+    }
+    @keyframes fill-in {
+      from { transform: scale(0); }
+      to { transform: scale(1); }
+    }
+    .cat { animation: settle 0.9s cubic-bezier(0.2, 0.8, 0.3, 1) both 0.5s; }
+    @keyframes settle {
+      from { opacity: 0; transform: translateY(14px); }
+      to { opacity: 1; transform: none; }
+    }
+  }
+  h1 {
+    font-size: clamp(40px, 6.5vw, 62px);
+    font-weight: 800; line-height: 1.04; letter-spacing: -1.5px;
+  }
+  h1 em { font-style: italic; color: var(--coral); }
+  .hero p {
+    margin-top: 20px; max-width: 44ch;
+    font-size: 18.5px; color: var(--dim);
+  }
+  .cat { width: 100%; max-width: 300px; justify-self: center; }
+  .cat img { width: 100%; height: auto; display: block; }
+
+  /* ---------- apps ---------- */
+  .apps { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+  .app-card {
+    background: var(--card); border: 1px solid var(--line); border-radius: 20px;
+    padding: 30px; display: flex; flex-direction: column; gap: 14px;
+  }
+  .app-head { display: flex; align-items: center; gap: 16px; }
+  .app-head img {
+    width: 64px; height: 64px; border-radius: 15px;
+    border: 1px solid var(--line);
+  }
+  .app-name { font-size: 22px; font-weight: 800; letter-spacing: -0.4px; }
+  .app-name em { font-style: italic; font-weight: 700; color: var(--coral); }
+  .app-kind {
+    font-family: "IBM Plex Mono", monospace; font-size: 11.5px; font-weight: 500;
+    letter-spacing: 1.8px; text-transform: uppercase; color: var(--subtle);
+    margin-top: 3px;
+  }
+  .app-card > p { color: var(--dim); font-size: 15.5px; flex: 1; }
+  .app-links { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+  .btn {
+    display: inline-block; text-decoration: none;
+    background: var(--ink); color: var(--card);
+    font-size: 14.5px; font-weight: 700;
+    padding: 11px 22px; border-radius: 12px;
+  }
+  .btn:hover { background: var(--coral); }
+  .app-links .plain {
+    font-size: 14.5px; font-weight: 500; color: var(--dim);
+    text-decoration: none; border-bottom: 1px solid var(--line);
+  }
+  .app-links .plain:hover { color: var(--coral); border-color: var(--coral); }
+  .soon {
+    display: inline-block;
+    font-family: "IBM Plex Mono", monospace; font-size: 11.5px; font-weight: 600;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    color: var(--gold); background: rgba(240, 168, 72, 0.14);
+    padding: 8px 14px; border-radius: 10px;
+  }
+
+  /* ---------- pro strip ---------- */
+  .pro {
+    margin: 26px 0 0; padding: 20px 30px;
+    border: 1px dashed var(--line); border-radius: 16px;
+    display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap;
+  }
+  .pro b { font-weight: 800; }
+  .pro b em { font-style: italic; color: var(--coral); }
+  .pro span { color: var(--dim); font-size: 15.5px; }
+
+  /* ---------- promises ---------- */
+  .promises {
+    padding: 64px 0 8px;
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px;
+  }
+  .promise h3 { font-size: 16.5px; font-weight: 800; margin-bottom: 6px; }
+  .promise h3::before { content: "■ "; color: var(--coral); font-size: 11px; vertical-align: 2px; }
+  .promise:nth-child(2) h3::before { color: var(--gold); }
+  .promise:nth-child(3) h3::before { color: var(--ink); }
+  .promise p { color: var(--dim); font-size: 15px; }
+
+  /* ---------- footer ---------- */
+  footer {
+    margin-top: 72px; border-top: 1px solid var(--line);
+    padding: 30px 0 56px;
+    display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap;
+    font-size: 14px; color: var(--dim);
+  }
+  footer .legal { display: flex; flex-direction: column; gap: 6px; }
+  footer a { color: var(--dim); text-decoration: none; border-bottom: 1px solid var(--line); }
+  footer a:hover { color: var(--coral); border-color: var(--coral); }
+  footer .mono { font-family: "IBM Plex Mono", monospace; font-size: 12.5px; letter-spacing: 1px; }
+
+  /* ---------- responsive ---------- */
+  @media (max-width: 760px) {
+    .hero { grid-template-columns: 1fr; padding: 48px 0 40px; }
+    .cat { max-width: 200px; order: -1; }
+    .apps { grid-template-columns: 1fr; }
+    .promises { grid-template-columns: 1fr; gap: 26px; padding-top: 48px; }
+    header nav { display: none; }
+  }
+</style>
 </head>
 <body>
 <div class="wrap">
-  <div class="brand">
-    <span class="wordmark">FatMika <em>Games</em></span>
-    <span class="studio">Legal</span>
+  <header>
+    <a class="wordmark" href="/">FatMika <em>Games</em></a>
+    <nav>
+      <a href="#apps">Apps</a>
+      <a href="legal/">Legal</a>
+      <a href="mailto:contact@fatmika.com">Contact</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div>
+      <div class="solve-strip" aria-hidden="true">
+        <span class="f" style="--d:0.05s"></span>
+        <span class="c" style="--d:0.30s"></span>
+        <span class="f" style="--d:0.15s"></span>
+        <span></span>
+        <span class="g" style="--d:0.45s"></span>
+        <span class="f" style="--d:0.10s"></span>
+        <span></span>
+        <span class="f" style="--d:0.25s"></span>
+        <span class="c" style="--d:0.55s"></span>
+        <span class="f" style="--d:0.20s"></span>
+        <span></span>
+        <span class="g" style="--d:0.40s"></span>
+      </div>
+      <h1>One puzzle<br />a <em>day</em>.<br />No ads, ever.</h1>
+      <p>FatMika Games makes small, daily logic puzzles — hand-built,
+      quietly polished, and free of ads, feeds, and timers. Solve today's,
+      keep the streak, come back tomorrow.</p>
+    </div>
+    <div class="cat">
+      <img src="assets/fat-mika.png" alt="Fat Mika, the studio's chunky orange cat" width="560" height="560" />
+    </div>
+  </section>
+
+  <section class="apps" id="apps">
+    <article class="app-card">
+      <div class="app-head">
+        <img src="assets/nonopix-icon.png" alt="" width="64" height="64" />
+        <div>
+          <div class="app-name">Nono<em>Pix</em></div>
+          <div class="app-kind">Daily nonogram</div>
+        </div>
+      </div>
+      <p>Fill the grid, reveal the pixel art. A new hand-picked puzzle every
+      midnight, weekly themes, and a collector's gallery of everything
+      you've solved.</p>
+      <div class="app-links">
+        <a class="btn" href="https://play.google.com/store/apps/details?id=app.nono.daily">Get it on Google Play</a>
+        <a class="plain" href="https://nonopix.com/">nonopix.com</a>
+      </div>
+    </article>
+
+    <article class="app-card">
+      <div class="app-head">
+        <img src="assets/sumdoku-icon.png" alt="" width="64" height="64" />
+        <div>
+          <div class="app-name">Sum<em>Doku</em></div>
+          <div class="app-kind">Daily killer sudoku</div>
+        </div>
+      </div>
+      <p>Classic sudoku plus cage sums. One puzzle a day matched to your
+      level, a three-part weekly challenge, and streak freezes for busy
+      days.</p>
+      <div class="app-links">
+        <span class="soon">Coming soon to Google Play</span>
+      </div>
+    </article>
+  </section>
+
+  <div class="pro">
+    <b>Fat Mika <em>Pro</em></b>
+    <span>One purchase unlocks premium in every FatMika app — buy it once, keep it everywhere.</span>
   </div>
-  <main>
-    <h1>App policies</h1>
-    <p class="updated">Privacy policies and account-deletion pages for FatMika Games apps.</p>
-    <table class="apps">
-      <thead><tr><th>App</th><th>Privacy policy</th><th>Account deletion</th></tr></thead>
-      <tbody>
-        <tr>
-          <td><strong>NonoPix</strong> — Daily Nonogram</td>
-          <td><a href="nonopix/privacy/">Privacy policy</a></td>
-          <td><a href="nonopix/delete-account/">Delete your account</a></td>
-        </tr>
-        <tr>
-          <td><strong>SumDoku</strong> — Daily Killer Sudoku</td>
-          <td><a href="sumdoku/privacy/">Privacy policy</a></td>
-          <td><a href="sumdoku/delete-account/">Delete your account</a></td>
-        </tr>
-      </tbody>
-    </table>
-    <hr />
-    <p class="footer-note">Questions:
-    <span class="email">contact@fatmika.com</span></p>
-  </main>
+
+  <section class="promises">
+    <div class="promise">
+      <h3>No ads, no feeds</h3>
+      <p>Nothing interrupts a solve. No banners, no rewarded videos, no
+      "watch this to continue".</p>
+    </div>
+    <div class="promise">
+      <h3>One a day</h3>
+      <p>A small, curated puzzle each midnight — a ritual, not a time sink.
+      The archive is there when you want more.</p>
+    </div>
+    <div class="promise">
+      <h3>Yours stays yours</h3>
+      <p>No trackers, no analytics SDKs, no data sold. Progress syncs only
+      if you sign in.</p>
+    </div>
+  </section>
+
+  <footer>
+    <div class="legal">
+      <span class="mono">LEGAL</span>
+      <span>NonoPix — <a href="nonopix/privacy/">privacy</a> · <a href="nonopix/delete-account/">delete account</a></span>
+      <span>SumDoku — <a href="sumdoku/privacy/">privacy</a> · <a href="sumdoku/delete-account/">delete account</a></span>
+    </div>
+    <div class="legal">
+      <span class="mono">CONTACT</span>
+      <span><a href="mailto:contact@fatmika.com">contact@fatmika.com</a></span>
+      <span>© 2026 Fat Mika</span>
+    </div>
+  </footer>
 </div>
 </body>
 </html>
