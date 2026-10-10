@@ -112,6 +112,7 @@
     margin-top: 3px;
   }
   .app-card > p { color: var(--dim); font-size: 15.5px; flex: 1; }
+  .app-card.wide { grid-column: 1 / -1; }
   .app-links { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
   .btn {
     display: inline-block; text-decoration: none;
@@ -182,6 +183,7 @@
     <a class="wordmark" href="/">FatMika <em>Games</em></a>
     <nav>
       <a href="#apps">Apps</a>
+      <a href="emberglass/">Emberglass</a>
       <a href="legal/">Legal</a>
       <a href="mailto:contact@fatmika.com">Contact</a>
     </nav>
@@ -245,6 +247,22 @@
       days.</p>
       <div class="app-links">
         <span class="soon">Coming soon to Google Play</span>
+      </div>
+    </article>
+    <article class="app-card wide">
+      <div class="app-head">
+        <img src="assets/emberglass-icon.png" alt="" width="64" height="64" />
+        <div>
+          <div class="app-name">Ember<em>glass</em></div>
+          <div class="app-kind">Game engine · in development</div>
+        </div>
+      </div>
+      <p>Something bigger in the workshop: a game engine where playing and
+      editing are the same thing. You say what you want, and an AI assistant
+      builds it into the live world while you play.</p>
+      <div class="app-links">
+        <a class="btn" href="emberglass/">See it work</a>
+        <a class="plain" href="https://emberglass.substack.com/">Devlog</a>
       </div>
     </article>
   </section>

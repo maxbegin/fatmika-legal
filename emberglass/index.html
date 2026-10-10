@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Emberglass — build the game while it runs</title>
+<meta name="description" content="Emberglass is a game engine in development where playing and editing are the same thing: describe what you want, and an AI assistant builds it into the live world while you play." />
+<meta property="og:title" content="Emberglass — build the game while it runs" />
+<meta property="og:description" content="A game engine in development where playing and editing are the same thing." />
+<meta property="og:image" content="https://www.fatmika.com/emberglass/assets/reel.webp" />
+<meta property="og:url" content="https://www.fatmika.com/emberglass/" />
+<link rel="icon" href="assets/icon-64.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=Sora:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --ink: #16120F;
+    --surface: #211B17;
+    --border: #3A322C;
+    --paper: #F7F4EF;
+    --muted: #CFC4B8;
+    --dim: #8f8378;
+    --ember: #F2761F;
+    --ember-deep: #D2560F;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--ink);
+    color: var(--paper);
+    font: 17px/1.6 "Sora", -apple-system, "Segoe UI", system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+  a { color: var(--ember); }
+  a:focus-visible, button:focus-visible { outline: 3px solid var(--ember); outline-offset: 3px; border-radius: 6px; }
+  .mono {
+    font-family: "IBM Plex Mono", monospace; font-size: 12.5px; font-weight: 500;
+    letter-spacing: 1.5px; text-transform: uppercase;
+  }
+
+  /* ---------- header ---------- */
+  header {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 26px 0 0;
+  }
+  header .lockup img { height: 34px; width: auto; display: block; }
+  header nav { display: flex; gap: 22px; }
+  header nav a { color: var(--dim); text-decoration: none; }
+  header nav a:hover { color: var(--ember); }
+
+  /* ---------- hero ---------- */
+  .hero { padding: 80px 0 48px; max-width: 760px; }
+  .status {
+    display: inline-flex; align-items: center; gap: 10px;
+    color: var(--muted); border: 1px solid var(--border); border-radius: 999px;
+    padding: 7px 16px; margin-bottom: 28px;
+  }
+  .status::before {
+    content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--ember);
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .status::before { animation: glow 2.4s ease-in-out infinite; }
+    @keyframes glow { 50% { box-shadow: 0 0 0 6px rgba(242, 118, 31, 0.18); } }
+  }
+  h1 {
+    font-size: clamp(40px, 6.4vw, 66px);
+    font-weight: 700; line-height: 1.05; letter-spacing: -1.8px;
+  }
+  h1 em { font-style: normal; color: var(--ember); }
+  .hero p { margin-top: 22px; font-size: 19px; color: var(--muted); max-width: 58ch; }
+  .actions { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 32px; }
+  .btn {
+    display: inline-block; text-decoration: none;
+    font-size: 15px; font-weight: 600;
+    padding: 12px 24px; border-radius: 12px;
+    background: var(--ember); color: var(--ink);
+  }
+  .btn:hover { background: var(--ember-deep); color: var(--paper); }
+  .btn.ghost { background: transparent; color: var(--paper); border: 1px solid var(--border); }
+  .btn.ghost:hover { border-color: var(--ember); color: var(--ember); }
+
+  /* ---------- clips ---------- */
+  .clip {
+    position: relative; display: block; width: 100%;
+    aspect-ratio: 16 / 9; overflow: hidden;
+    background: var(--surface); border: 1px solid var(--border); border-radius: 16px;
+    padding: 0; font: inherit; color: inherit; cursor: default;
+  }
+  .clip img, .clip iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; object-fit: cover; }
+  .clip.playable { cursor: pointer; }
+  .clip.playable::after {
+    content: ""; position: absolute; left: 50%; top: 50%;
+    width: 68px; height: 68px; margin: -34px 0 0 -34px; border-radius: 50%;
+    background: var(--ember) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M9 6.5v11l9-5.5z' fill='%2316120F'/%3E%3C/svg%3E") center / 34px no-repeat;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.45);
+    transition: transform 0.15s ease;
+  }
+  .clip.playable:hover::after { transform: scale(1.08); }
+  .clip.playing::after { display: none; }
+
+  .featured { margin-bottom: 14px; }
+  .featured .clip { border-radius: 20px; }
+  figcaption { margin-top: 12px; color: var(--muted); font-size: 15px; }
+  figcaption b { color: var(--paper); font-weight: 600; }
+
+  section h2 {
+    font-size: 26px; font-weight: 700; letter-spacing: -0.5px; margin: 72px 0 6px;
+  }
+  section .lead { color: var(--dim); margin-bottom: 26px; }
+  .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px 24px; }
+
+  /* ---------- follow ---------- */
+  .follow {
+    margin-top: 80px; padding: 36px;
+    background: var(--surface); border: 1px solid var(--border); border-radius: 20px;
+    display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap;
+  }
+  .follow h2 { margin: 0 0 6px; }
+  .follow p { color: var(--muted); max-width: 52ch; }
+
+  /* ---------- footer ---------- */
+  footer {
+    margin-top: 64px; border-top: 1px solid var(--border);
+    padding: 30px 0 56px;
+    display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap;
+    font-size: 14px; color: var(--dim);
+  }
+  footer .col { display: flex; flex-direction: column; gap: 6px; }
+  footer a { color: var(--dim); text-decoration: none; border-bottom: 1px solid var(--border); }
+  footer a:hover { color: var(--ember); border-color: var(--ember); }
+
+  @media (max-width: 760px) {
+    .hero { padding: 52px 0 36px; }
+    .grid { grid-template-columns: 1fr; }
+    header nav { display: none; }
+    .follow { padding: 26px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a class="lockup" href="./"><img src="assets/emberglass-lockup-paper.svg" alt="Emberglass" width="182" height="34" /></a>
+    <nav class="mono">
+      <a href="#showcase">Showcase</a>
+      <a href="https://emberglass.substack.com/">Devlog</a>
+      <a href="/">FatMika Games</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="status mono">In development · nothing to download yet</div>
+    <h1>Build the game<br /><em>while it runs.</em></h1>
+    <p>Emberglass is a game engine where playing and editing are the same
+    thing. You say what you want, and an AI assistant builds it into the
+    live world (houses, props, weather, characters) while you watch and
+    play.</p>
+    <div class="actions">
+      <a class="btn" href="https://emberglass.substack.com/">Read the devlog</a>
+      <a class="btn ghost" href="#showcase">Watch it work</a>
+    </div>
+  </section>
+
+  <figure class="featured" id="showcase">
+    <button class="clip" data-yt="" aria-label="Play: a minute of Emberglass">
+      <img src="assets/reel.webp" alt="A character in a red cloth cape, from the Emberglass feature reel" width="1280" height="720" />
+    </button>
+    <figcaption><b>A minute of Emberglass.</b> Cloth that moves, a storm that rolls in and clears, rain on the camera lens.</figcaption>
+  </figure>
+
+  <section>
+    <h2>Made by talking</h2>
+    <p class="lead">Everything below was asked for in plain words and built by the engine's tools. Nothing was modelled by hand.</p>
+    <div class="grid">
+      <figure>
+        <button class="clip" data-yt="" aria-label="Play: houses with rooms inside">
+          <img src="assets/houses.webp" alt="A generated house seen from above with its roof off, showing furnished rooms" width="1280" height="720" loading="lazy" />
+        </button>
+        <figcaption><b>Houses with rooms inside.</b> Walls, doors and furniture from a short description.</figcaption>
+      </figure>
+      <figure>
+        <button class="clip" data-yt="" aria-label="Play: a throne of blades">
+          <img src="assets/throne.webp" alt="A dark throne made of jagged blades" width="1280" height="720" loading="lazy" />
+        </button>
+        <figcaption><b>A throne of blades.</b> Drawn first, then built, then worn and rusted on request.</figcaption>
+      </figure>
+      <figure>
+        <button class="clip" data-yt="" aria-label="Play: an old computer terminal">
+          <img src="assets/crt.webp" alt="A retro computer terminal with a green screen" width="1280" height="720" loading="lazy" />
+        </button>
+        <figcaption><b>An old terminal.</b> Each round of feedback becomes a new version you can compare.</figcaption>
+      </figure>
+      <figure>
+        <button class="clip" data-yt="" aria-label="Play: a tool cabinet">
+          <img src="assets/chest.webp" alt="A blue metal tool cabinet with drawers" width="1280" height="720" loading="lazy" />
+        </button>
+        <figcaption><b>A tool cabinet.</b> “A duller blue, and metal corner brackets” — and it repaints.</figcaption>
+      </figure>
+      <figure>
+        <button class="clip" data-yt="" aria-label="Play: a forged anvil">
+          <img src="assets/anvil.webp" alt="A forged iron anvil with rust at the edges" width="1280" height="720" loading="lazy" />
+        </button>
+        <figcaption><b>A forged anvil.</b> Flat black becomes iron, rust fades in at the edges, then variations.</figcaption>
+      </figure>
+      <figure>
+        <button class="clip" data-yt="" aria-label="Play: from realistic to sci-fi">
+          <img src="assets/quality.webp" alt="A realistic oak tree" width="1280" height="720" loading="lazy" />
+        </button>
+        <figcaption><b>Realistic to sci-fi.</b> Trees and control-room screens from the same tools.</figcaption>
+      </figure>
+      <figure>
+        <button class="clip" data-yt="" aria-label="Play: props for a world">
+          <img src="assets/props.webp" alt="A rock surrounded by a ring of small mushrooms" width="1280" height="720" loading="lazy" />
+        </button>
+        <figcaption><b>Props for a world.</b> Chests, benches, rocks and gardens, each its own recipe.</figcaption>
+      </figure>
+      <figure>
+        <button class="clip" data-yt="" aria-label="Play: a candy room at night">
+          <img src="assets/critters.webp" alt="A candy-striped room at night full of round toy critters on shelves" width="1280" height="720" loading="lazy" />
+        </button>
+        <figcaption><b>A candy room at night.</b> One style applied to a whole room, lit by lanterns.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <div class="follow">
+    <div>
+      <h2>Follow along</h2>
+      <p>The devlog is where the progress gets written up: what got built, what didn't work, and why.</p>
+    </div>
+    <a class="btn" href="https://emberglass.substack.com/">Subscribe on Substack</a>
+  </div>
+
+  <footer>
+    <div class="col">
+      <span class="mono">Emberglass</span>
+      <span>A game engine by <a href="/">FatMika Games</a></span>
+    </div>
+    <div class="col">
+      <span class="mono">Contact</span>
+      <span><a href="mailto:contact@fatmika.com">contact@fatmika.com</a></span>
+      <span>© 2026 Fat Mika</span>
+    </div>
+  </footer>
+</div>
+<script>
+  // A clip with a YouTube id becomes playable; the player loads only on click.
+  document.querySelectorAll(".clip").forEach(function (clip) {
+    var id = clip.dataset.yt;
+    if (!id) { clip.removeAttribute("aria-label"); clip.tabIndex = -1; return; }
+    clip.classList.add("playable");
+    clip.addEventListener("click", function () {
+      if (clip.classList.contains("playing")) return;
+      var f = document.createElement("iframe");
+      f.src = "https://www.youtube-nocookie.com/embed/" + encodeURIComponent(id) + "?autoplay=1&rel=0";
+      f.title = clip.getAttribute("aria-label") || "Video";
+      f.allow = "autoplay; encrypted-media; picture-in-picture; fullscreen";
+      f.allowFullscreen = true;
+      clip.classList.add("playing");
+      clip.appendChild(f);
+    });
+  });
+</script>
+</body>
+</html>
